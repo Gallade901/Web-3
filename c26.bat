@@ -1,0 +1,1 @@
+copy C:\Users\MSI\Desktop\web-lab-3\target\web-lab-3-1.0-SNAPSHOT.war C:\Users\MSI\Desktop\WildFly\wildfly-26.0.0.Final\standalone\deployments\

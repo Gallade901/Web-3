@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+body {
+    color: #0a0921;
+    background-color: #c9ed90;
+    font-family: 'Roboto', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+   }
+
+table {
+    text-align: center;
+    width: 100%;
+}
+  td, th {
+    vertical-align: top;
+}
+thead {
+    font-size: 18px;
+    font-weight: normal;
+
+}
+#error {
+    color: red;
+    font-weight: bold;
+}
+
+.shapka {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100px;
+   font-weight: 600;
+   font-size: 20px;
+}
+.form {
+   padding-left: 50px;
+}
+.input-form__button-list_x, .input-form_r {
+   display: grid;
+   grid-template-columns: repeat(5, 30px);
+   list-style-type: none;
+   gap: 5px; /* Adjust as needed */
+}
+.x-button, .r-button {
+ display: block;
+ width: 30px; /* Adjust as needed */
+ height: 20px; /* Adjust as needed */
+}
+
+.main_gft {
+    display: flex;
+}
+
+.control {
+   flex: 1;
+}
+
+.table {
+   flex: 1;
+}
+#selectedXValue, #selectedRValue, .input-form__info {
+    color: blue;
+}
+.datetime {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.datetime__time {
+    font-size: 72px;
+}
+

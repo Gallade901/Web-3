@@ -1,0 +1,154 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:pt="jakarta.faces.passthrough"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:param name="title" value="Lab work #3 - Main page"/>
+    <ui:define name="styles">
+        <h:outputStylesheet name="styles/main.css"/>
+    </ui:define>
+    <ui:define name="scripts">
+        <h:outputScript name="scripts/plot.js" target="body"/>
+    </ui:define>
+    <ui:define name="content">
+        <div class="main_gft">
+            <div class="control">
+                <div class="plot">
+                    <canvas class="graph-canvas_points" id="plot__canvas" width="500" height="500"/>
+                </div>
+                <div class="form">
+                    <h:form id="inpForm">
+                        <p class="input-form__info">Введите координаты точки</p>
+                        <p> <b>Enter X: </b>  <span id="selectedXValue">1</span></p>
+
+                        <p>
+                            <ul class="input-form__control input-form__button-list_x">
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="-3" onclick="updateXValue('-3')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="-2" onclick="updateXValue('-2')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="-1" onclick="updateXValue('-1')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="0" onclick="updateXValue('0')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="1" onclick="updateXValue('1')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="2" onclick="updateXValue('2')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="3" onclick="updateXValue('3')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="4" onclick="updateXValue('4')"/>
+                                </li>
+                                <li class="input-form_button-x">
+                                    <h:commandButton class="x-button" type="button" value="5" onclick="updateXValue('5')"/>
+                                </li>
+                            </ul>
+                        </p>
+                        <h:panelGroup styleClass="input-form__hidden_x">
+                            <h:inputHidden value="#{entriesBean.entry.xValue}">
+                                <f:validateRequired/>
+                                <f:validateLongRange minimum="-3" maximum="5"/>
+                            </h:inputHidden>
+                        </h:panelGroup>
+                        <br/>
+                        <div class="input-block">
+
+                            <h:inputText id="input-y"  value="#{entriesBean.entry.yValue}" required="true"
+                                         styleClass="text-input" pt:placeholder="from -3.0 to 5.0"
+                                         maxlength="7"
+                                         pt:pattern="^[0-4]([.][0-9]+)?$|^-[0-2]([.][0-9]+)?$">
+                                <f:validateRequired/>
+                                <f:validateDoubleRange minimum="-3" maximum="5"/>
+                            </h:inputText>
+                        </div>
+                        <p> Enter <b>Y</b> number from -3 to 5 </p>
+                        <br/>
+                        <p><b>Enter R: </b> <span id="selectedRValue">1</span> </p>
+                        <p>
+                            <ul class="input-form_r">
+                                <li class="input-form_button-r">
+                                    <h:commandButton class="r-button" type="button" value="1" onclick="updateRValue('1')"/>
+                                </li>
+                                <li class="input-form_button-r">
+                                    <h:commandButton class="r-button" type="button" value="1.5" onclick="updateRValue('1.5')"/>
+                                </li>
+                                <li class="input-form_button-r">
+                                    <h:commandButton class="r-button" type="button" value="2" onclick="updateRValue('2')"/>
+                                </li>
+                                <li class="input-form_button-r">
+                                    <h:commandButton class="r-button" type="button" value="2.5" onclick="updateRValue('2.5')"/>
+                                </li>
+                                <li class="input-form_button-r">
+                                    <h:commandButton class="r-button" type="button" value="3" onclick="updateRValue('3')"/>
+                                </li>
+                            </ul>
+                        </p>
+                        <h:panelGroup styleClass="input-form__hidden_r">
+                            <h:inputHidden value="#{entriesBean.entry.rValue}">
+                                <f:validateRequired/>
+                                <f:validateLongRange minimum="1" maximum="3"/>
+                            </h:inputHidden>
+                        </h:panelGroup>
+                        <br/>
+                        <p>
+                            <h:commandButton class="submit-button" value="Отправить" action="#{entriesBean.addEntry}"/>
+<!--                            <h:commandButton class="submit-button" value="Отправить">-->
+<!--                                <f:ajax execute="@form" action="#{entriesBean.addEntry()}" render="result-table" />-->
+<!--                            </h:commandButton>-->
+                        </p>
+                        <h:commandButton value="Очистить" action="#{entriesBean.clearEntries}" immediate="true"/>
+                    </h:form>
+                </div>
+            </div>
+            <div class="table">
+                <table>
+                <tr>
+                    <td>
+                        ${entry.xValue}
+                    </td>
+                    <td>
+                        ${entry.yValue}
+                    </td>
+                    <td>
+                        ${entry.rValue}
+                    </td>
+                </tr>
+                </table>
+
+                ${entry.rValue}
+                ${entry.xValue}
+                <h:form>
+                    <h:commandLink action="index.xhtml" value="Стартовая страница" />
+                </h:form>
+                <h:dataTable class="result-table" value="#{entriesBean.entries}" var="entry">
+                    <h:column headerClass="result-table__column result-table__column_coords">
+                        <f:facet name="header">X</f:facet>
+                        <h:outputText value="#{entry.xValue}"/>
+                    </h:column>
+                    <h:column headerClass="result-table__column result-table__column_coords">
+                        <f:facet name="header">Y</f:facet>
+                        <h:outputText value="#{entry.yValue}"/>
+                    </h:column>
+                    <h:column headerClass="result-table__column result-table__column_coords">
+                        <f:facet name="header">R</f:facet>
+                        <h:outputText value="#{entry.rValue}"/>
+                    </h:column>
+                    <h:column headerClass="result-table__column result-table__column_hitres">
+                        <f:facet name="header">Результат</f:facet>
+                        <h:outputText value="#{entry.hitResult}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+        <h:outputScript library="scripts" name="plot.js"/>
+    </ui:define>
+</ui:composition>

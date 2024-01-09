@@ -1,0 +1,22 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="jakarta.faces.facelets">
+    <ui:param name="title" value="Lab work #3 - Home page"/>
+    <ui:define name="content">
+        <div class="datetime">
+            <p>
+                <span class="datetime__date"> <!-- Date from JS --> </span>
+            </p>
+            <br/>
+            <p>
+                <span class="datetime__time"> <!-- Time from JS --> </span>
+            </p>
+            <br/>
+            <span id="date-time"> </span>
+            <h:form>
+                <h:commandLink action="main.xhtml" value="Перейти на главную" />
+            </h:form>
+        </div>
+        <h:outputScript library="scripts" name="index.js"/>
+    </ui:define>
+</ui:composition>

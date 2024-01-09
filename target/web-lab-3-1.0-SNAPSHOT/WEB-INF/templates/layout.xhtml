@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>#{title}</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
+    <h:outputStylesheet name="styles/style.css"/>
+</h:head>
+<h:body>
+    <header>
+        <ui:include src="/WEB-INF/includes/layout/header.xhtml"/>
+    </header>
+    <main>
+        <ui:insert name="content"/>
+    </main>
+</h:body>
+</html>
