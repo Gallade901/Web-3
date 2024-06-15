@@ -18,10 +18,15 @@
                     <canvas class="graph-canvas_points" id="plot__canvas" width="500" height="500"/>
                 </div>
                 <div class="form">
+                    <p>
+                        Всего точек: <h:outputText value="#{entriesBean.allCount}" />
+                        Промахов: <h:outputText value="#{entriesBean.missCount}" />
+                        Площадь: <span id="area">1.535</span>
+                    </p>
+                    <span id="alert">${entriesBean.alert}</span>
                     <h:form id="inpForm">
                         <p class="input-form__info">Введите координаты точки</p>
                         <p> <b>Enter X: </b>  <span id="selectedXValue">1</span></p>
-
                         <p>
                             <ul class="input-form__control input-form__button-list_x">
                                 <li class="input-form_button-x">

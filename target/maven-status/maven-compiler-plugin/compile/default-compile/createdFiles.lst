@@ -1,2 +1,4 @@
+spo\MBeanRegistryUtil.class
 spo\EntriesBean.class
+spo\EntriesMXBean.class
 spo\Entry.class

@@ -13,6 +13,8 @@ else {
     rval = 1;
 }
 document.getElementById('selectedRValue').innerHTML = rval;
+let ar = rval * rval * 1.535;
+document.getElementById('area').innerHTML = ar;
 let xval = 1;
 let yval = 0;
 let info = $('.input-form__info');
@@ -226,7 +228,9 @@ function updateXValue(value) {
 }
 function updateRValue(value) {
    document.getElementById('selectedRValue').innerHTML = value;
+   document.getElementById('area').innerHTML = value * value * 1.535;
 }
+
 
 loadTablePoints();
 

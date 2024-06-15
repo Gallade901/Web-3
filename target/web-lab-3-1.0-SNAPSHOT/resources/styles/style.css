@@ -63,6 +63,9 @@ thead {
 #selectedXValue, #selectedRValue, .input-form__info {
     color: blue;
 }
+#alert {
+    color: red;
+}
 .datetime {
     position: absolute;
     top: 50%;
